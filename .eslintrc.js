@@ -46,6 +46,8 @@ module.exports = {
       "error",
       { functions: false, classes: true, variables: true, typedefs: true },
     ],
+    // Allow devDependencies in tests
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.spec.ts"]}],
     // Common abbreviations are known and readable
     "unicorn/prevent-abbreviations": "off",
   },
