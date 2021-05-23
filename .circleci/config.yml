@@ -9,7 +9,7 @@ orbs:
 
 defaults: &defaults
   docker:
-    - image: andreysenov/firebase-tools
+    - image: circleci/node:12
 
 jobs:
   install:
