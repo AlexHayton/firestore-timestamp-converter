@@ -4,20 +4,15 @@
 #
 version: 2.1
 
-orbs:
-  openjdk-install: cloudesire/openjdk-install@1.2.3
-
 defaults: &defaults
   docker:
-    - image: circleci/node:12
+    - image: alexhayton/firebase-circleci
 
 jobs:
   install:
     <<: *defaults
     steps:
       - checkout
-      - run: sudo apt-get install software-properties-common
-      - openjdk-install/openjdk
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "yarn.lock" }}
@@ -36,9 +31,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
-      - run:
-          name: Install Firebase Tools
-          command: npm install --prefix=./firebase-deploy firebase-tools
       - run:
           name: Run Firestore Emulator
           command: ./firebase-deploy/node_modules/.bin/firebase emulators:start --only firestore
