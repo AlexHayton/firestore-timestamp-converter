@@ -33,10 +33,10 @@ jobs:
           at: ~/project
       - run:
           name: Install Firebase Tools
-          command: npm install -g firebase-tools
+          command: npm install --prefix=./firebase-deploy firebase-tools
       - run:
           name: Run Firestore Emulator
-          command: firebase emulators:start --only firestore
+          command: ./firebase-deploy/node_modules/.bin/firebase emulators:start --only firestore
           background: true
       - run:
           name: Run tests
