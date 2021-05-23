@@ -16,7 +16,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - openjdk
+      - openjdk-install/openjdk
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "yarn.lock" }}
