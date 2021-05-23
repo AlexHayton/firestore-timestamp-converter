@@ -33,7 +33,7 @@ jobs:
           at: ~/project
       - run:
           name: Run Firestore Emulator
-          command: ./firebase-deploy/node_modules/.bin/firebase emulators:start --only firestore
+          command: firebase emulators:start --only firestore
           background: true
       - run:
           name: Run tests
