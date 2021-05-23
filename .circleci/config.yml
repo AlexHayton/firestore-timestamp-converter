@@ -2,11 +2,11 @@
 #
 # Check {{ '/2.0/language-javascript/' | docs_url }} for more details
 #
-version: 2
+version: 2.1
 
 defaults: &defaults
   docker:
-    - image: andreysenov/firebase-tools
+    - image: alexhayton/firebase-circleci
 
 jobs:
   install:
@@ -16,10 +16,10 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "yarn.lock" }}
-      - run: yarn --frozen-lockfile
+      - run: yarn --frozen-lockfile --cache-folder ~/.cache/yarn
       - save_cache:
           paths:
-            - node_modules
+            - ~/.cache/yarn
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - persist_to_workspace:
           root: ~/project
