@@ -2,7 +2,10 @@
 #
 # Check {{ '/2.0/language-javascript/' | docs_url }} for more details
 #
-version: 2
+version: 2.1
+
+orbs:
+  openjdk-install: cloudesire/openjdk-install@1.2.3
 
 defaults: &defaults
   docker:
@@ -13,6 +16,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - openjdk
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "yarn.lock" }}
@@ -32,8 +36,11 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run:
+          name: Install Firebase Tools
+          command: npm install --prefix=./firebase-deploy firebase-tools
+      - run:
           name: Run Firestore Emulator
-          command: firebase emulators:start --only firestore
+          command: ./firebase-deploy/node_modules/.bin/firebase emulators:start --only firestore
           background: true
       - run:
           name: Run tests
