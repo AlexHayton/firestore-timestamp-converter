@@ -32,6 +32,10 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run:
+          name: Firestore emulator
+          command: firebase emulators:start --only firestore
+          background: true
+      - run:
           name: Run tests
           command: yarn test
       - run:
