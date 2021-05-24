@@ -1,6 +1,6 @@
 {
   "name": "firestore-timestamp-converter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Easily convert between Firestore Timestamps and JS Dates",
   "main": "dist/firestore-timestamp-converter.js",
   "umd:main": "dist/firestore-timestamp-converter.umd.js",
