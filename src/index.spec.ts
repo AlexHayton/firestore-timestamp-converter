@@ -65,7 +65,7 @@ describe("Converter tests", () => {
         .set(sampleData);
     });
 
-    it("Converts Timestamps to dates", async () => {
+    it("Converts Timestamps to dates with get", async () => {
       const snapshot = await db
         .collection("firestore-timestamp-converter")
         .doc(id)
@@ -76,6 +76,21 @@ describe("Converter tests", () => {
 
       const data = snapshot.data();
       expect(data).toEqual(sampleData);
+    });
+
+    it("Converts Timestamps to dates with onSnapshot", () => {
+      return new Promise((resolve) => {
+        db.collection("firestore-timestamp-converter")
+          .doc(id)
+          .withConverter(new TimestampConverter<TypeWithDates>())
+          .onSnapshot((snapshot) => {
+            expect(snapshot.exists).toEqual(true);
+
+            const data = snapshot.data();
+            expect(data).toEqual(sampleData);
+            resolve(true);
+          });
+      });
     });
   });
 });
