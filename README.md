@@ -25,7 +25,8 @@ interface TypeWithDates {
 // =========================
 const snapshot = await db
   .collection("firestore-timestamp-converter")
-  .doc(id);
+  .doc(id)
+  .get();
 
 const data = snapshot.data();
 data.dateValue instanceof Timestamp; // true
