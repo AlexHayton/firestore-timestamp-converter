@@ -25,10 +25,10 @@ interface TypeWithDates {
 // =========================
 const snapshot = await db
   .collection("firestore-timestamp-converter")
-  .doc(id)
+  .doc(id);
 
 const data = snapshot.data();
-data.dateValue instanceof Timestamp // true
+data.dateValue instanceof Timestamp; // true
 myFunc(data); // This function now has to remember that dateValue is a Timestamp not a JS date!
 
 // With TimestampConverter
@@ -40,7 +40,7 @@ const snapshot = await db
   .get(); // Now I will return a TypeWithDates instead of a DocumentData!
 
 const data = snapshot.data();
-data.dateValue instanceof Date // true
+data.dateValue instanceof Date; // true
 myFunc(data); // This function receives a JS date!
 ```
 
