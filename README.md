@@ -12,7 +12,7 @@ Firestore stores all its dates/times with a custom Timestamp data type, which is
 
 This library makes it easy to convert between and 'think' in terms of JS Dates without having to keep remembering to call `.toDate()` on the Firestore outputs.
 
-This works with all the normal methods for fetching data `get` and `onSnapshot` and doesn't interfere with the process of saving back to the Firestore document with `set` or `add`
+This works with all the normal methods for fetching data (`get` and `onSnapshot`) and doesn't interfere with the process of saving back to the Firestore document with `set` or `add`
 
 ## Usage
 
