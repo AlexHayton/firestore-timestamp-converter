@@ -8,6 +8,7 @@ interface TypeWithDates {
   stringValue: string;
   numberValue: number;
   dateValue: Date;
+  optionalDateValue?: Date;
 }
 
 const firebaseConfig = {
@@ -49,6 +50,7 @@ describe("Converter tests", () => {
         throw new Error("Expected data to exist");
       }
       expect(data.dateValue).toBeInstanceOf(firebase.firestore.Timestamp);
+      expect(data.optionalDateValue).toBeUndefined();
       expect(data.stringValue).toEqual(sampleData.stringValue);
       expect(data.numberValue).toEqual(sampleData.numberValue);
       expect(data.boolValue).toEqual(sampleData.boolValue);
