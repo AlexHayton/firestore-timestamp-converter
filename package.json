@@ -5,6 +5,7 @@
   "main": "dist/firestore-timestamp-converter.js",
   "umd:main": "dist/firestore-timestamp-converter.umd.js",
   "module": "dist/firestore-timestamp-converter.mjs",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "readme.md"
